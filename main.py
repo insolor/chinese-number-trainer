@@ -1,6 +1,3 @@
-def main():
-    print("Hello from chinese-number-trainer!")
+import streamlit as st
 
-
-if __name__ == "__main__":
-    main()
+st.header("Chinese Number Trainer")
