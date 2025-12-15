@@ -9,7 +9,7 @@ audio_directory = Path("audio")
 audio_directory.mkdir(parents=True, exist_ok=True)
 
 text = st.text_input(label="Text")
-button = st.button("Generate")
+button = st.button("Generate", disabled=not text)
 
 language = "zh"
 
