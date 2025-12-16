@@ -118,17 +118,23 @@ source = { virtual = "." }
 dependencies = [
     { name = "cn2an" },
     { name = "gtts" },
-    { name = "pytest" },
     { name = "streamlit" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "pytest" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "cn2an", specifier = ">=0.5.23" },
     { name = "gtts", specifier = ">=2.5.4" },
-    { name = "pytest", specifier = ">=9.0.2" },
     { name = "streamlit", specifier = ">=1.51.0,<2" },
 ]
+
+[package.metadata.requires-dev]
+dev = [{ name = "pytest", specifier = ">=9.0.2" }]
 
 [[package]]
 name = "click"
