@@ -1,3 +1,4 @@
+import random
 from tts import create_audio
 
 import streamlit as st
@@ -5,13 +6,15 @@ import cn2an
 
 st.header("Chinese Number Trainer")
 
-text = st.text_input(label="Enter a number")
-if text:
+start_button = st.button(label="Start")
+
+if start_button:
+    number = random.randint(0, 99)
     converted = None
     try:
-        converted = cn2an.an2cn(text, "low")
+        converted = cn2an.an2cn(number, "low")
     except ValueError:
-        md = st.error("Invalid input")
+        md = st.error(f"Invalid number: {number}")
 
     if converted:
         md = st.markdown(converted)
