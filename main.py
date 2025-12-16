@@ -11,7 +11,7 @@ st.header("Chinese Number Trainer")
 audio_directory = Path("audio")
 audio_directory.mkdir(parents=True, exist_ok=True)
 
-text = st.text_input(label="Text")
+text = st.text_input(label="Enter a number")
 if text:
     converted = None
     try:
