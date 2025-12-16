@@ -1,15 +1,9 @@
-from uuid import uuid4
+from tts import create_audio
+
 import streamlit as st
-from gtts import gTTS
-from pathlib import Path
 import cn2an
 
-language = "zh"
-
 st.header("Chinese Number Trainer")
-
-audio_directory = Path("audio")
-audio_directory.mkdir(parents=True, exist_ok=True)
 
 text = st.text_input(label="Enter a number")
 if text:
@@ -21,8 +15,6 @@ if text:
 
     if converted:
         md = st.markdown(converted)
-        file = audio_directory / f"{uuid4()}.mp3"
-        tts = gTTS(converted, lang=language)
-        tts.save(file)
+        file = create_audio(converted)
         st.audio(file, format="audio/mpeg", autoplay=True)
         file.unlink()
