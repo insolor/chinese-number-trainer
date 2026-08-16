@@ -5,19 +5,25 @@ import streamlit as st
 import cn2an
 
 
+def convert_number_to_cn(number: int) -> str:
+    return cn2an.an2cn(number, "low")
+
+
 def run_quiz(top: int) -> None:
     number = random.randint(0, top)
     converted = None
     try:
-        converted = cn2an.an2cn(number, "low")
+        converted = convert_number_to_cn(number)
     except ValueError:
         st.error(f"Invalid number: {number}")
 
     if converted:
-        st.markdown(converted)
+        st.markdown(converted)  # TODO: don't show converted, add quiz
         file = create_audio(converted)
-        st.audio(file, format="audio/mpeg", autoplay=True)
-        file.unlink()
+        try:
+            st.audio(file, format="audio/mpeg", autoplay=True)
+        finally:
+            file.unlink()
 
 
 st.header("Chinese Number Trainer")
