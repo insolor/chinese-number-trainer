@@ -5,8 +5,8 @@ import streamlit as st
 import cn2an
 
 
-def run_quiz() -> None:
-    number = random.randint(0, 99)
+def run_quiz(top: int) -> None:
+    number = random.randint(0, top)
     converted = None
     try:
         converted = cn2an.an2cn(number, "low")
@@ -22,6 +22,8 @@ def run_quiz() -> None:
 
 st.header("Chinese Number Trainer")
 
+top = st.radio("Top number", options=[10, 100, 1000, 10_000, 100_000])
+
 start_button = st.button(label="Start")
 if start_button:
-    run_quiz()
+    run_quiz(top)
